@@ -26,13 +26,15 @@ namespace Telnet
             Console.Write("Enter the name for the device: ");
             string hostInput = Console.ReadLine();
             Ti.CiscoCommand("Hostname ", hostInput);
-            Ti.CiscoCommand("exit");
+
+            Console.WriteLine();
 
             // Configure VTY
             Ti.CiscoCommand("line vty 0 15");
             Ti.CiscoCommand("password cisco");
+            Ti.CiscoCommand("login");
             Ti.CiscoCommand("exit");
-            
+
             // Configure enable password
             Ti.CiscoCommand("enable secret cisco");
             Ti.CiscoCommand("banner motd !No access allowed!");
@@ -43,6 +45,8 @@ namespace Telnet
             string vlanInput = Console.ReadLine();
             Ti.CiscoCommand("interface ", vlanInput);
 
+            Console.WriteLine();
+
             Console.WriteLine("Enter the IP and Subnet for the VLAN");
             Console.Write("IP: ");
             string ipInput = Console.ReadLine();
@@ -50,6 +54,8 @@ namespace Telnet
             string subnetInput = Console.ReadLine();
             Ti.CiscoCommand("IP Address ", ipInput + "" + subnetInput);
             Ti.CiscoCommand("exit");
+
+            Console.WriteLine();
 
             // Configure Interface
             Console.WriteLine("Configure Interface");
@@ -79,7 +85,6 @@ namespace Telnet
                 Ti.CiscoCommand("exit");
             }
 
-            Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
     }
