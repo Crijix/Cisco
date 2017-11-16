@@ -34,26 +34,28 @@ namespace Telnet
             Ti.CiscoCommand("password cisco");
             Ti.CiscoCommand("login");
             Ti.CiscoCommand("exit");
+            Console.WriteLine("VTY 0 to 15 - CONFIGURED");
 
             // Configure enable password
             Ti.CiscoCommand("enable secret cisco");
-            Ti.CiscoCommand("banner motd !No access allowed!");
+            Ti.CiscoCommand("banner motd #Unauthorized access to this device is prohibited!# ");
+            Console.WriteLine("Enable password  - SET");
+            Console.WriteLine("Banner MOTD - SET");
 
             // Configure VLAN
-            Console.WriteLine("Configure VLAN");
+            Console.WriteLine("\nConfigure VLAN");
             Console.Write("Enter the name for the VLAN: ");
             string vlanInput = Console.ReadLine();
-            Ti.CiscoCommand("interface ", vlanInput);
+            Ti.CiscoCommand("", vlanInput);
+            Ti.CiscoCommand("exit");
 
             Console.WriteLine();
 
-            Console.WriteLine("Enter the IP and Subnet for the VLAN");
-            Console.Write("IP: ");
-            string ipInput = Console.ReadLine();
-            Console.Write("Subnet: ");
-            string subnetInput = Console.ReadLine();
-            Ti.CiscoCommand("IP Address ", ipInput + "" + subnetInput);
-            Ti.CiscoCommand("exit");
+            //Console.WriteLine("Enter the IP and Subnet for the VLAN");
+            //Console.Write("IP and Subnet: ");
+            //string ipInput = Console.ReadLine();
+            //Ti.CiscoCommand("IP Address ", ipInput);
+            //Ti.CiscoCommand("exit");
 
             Console.WriteLine();
 
@@ -84,6 +86,31 @@ namespace Telnet
                 Ti.CiscoCommand("exit");
                 Ti.CiscoCommand("exit");
             }
+
+            Console.WriteLine();
+
+            // Configure Ports to VLAN
+            Ti.CiscoCommand("Configure Terminal");
+            Console.WriteLine("Assign ports to VLAN");
+            Console.WriteLine("Enter the range you wish to assign");
+            Console.Write("First Port: ");
+            int portFirstVlan = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Last Port: ");
+            int portLastVlan = Convert.ToInt32(Console.ReadLine());
+            Ti.CiscoCommand("interface range fa0/" + portFirstVlan + " - " + portLastVlan);
+            Ti.CiscoCommand("No shutdown");
+            Ti.CiscoCommand("Switchport mode access");
+            Ti.CiscoCommand("switchport access " + vlanInput);
+            Ti.CiscoCommand("exit");
+            Ti.CiscoCommand("exit");
+
+            // Show Running-Config
+            List<String> Result = new List<String>();
+            Result = Ti.CiscoCommand("Show running");
+
+            Result.ForEach(delegate (String line) {
+                Console.WriteLine(line);
+            });
 
             Console.ReadKey();
         }
