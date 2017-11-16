@@ -42,22 +42,20 @@ namespace Telnet
             Console.WriteLine("Enable password  - SET");
             Console.WriteLine("Banner MOTD - SET");
 
-            // Configure VLAN
-            Console.WriteLine("\nConfigure VLAN");
+            // Configure VLAN 99
+            Console.WriteLine("\nConfigure Management VLAN");
             Console.Write("Enter the name for the VLAN: ");
-            string vlanInput = Console.ReadLine();
-            Ti.CiscoCommand("", vlanInput);
+            string managementInput = Console.ReadLine();
+            Ti.CiscoCommand("", managementInput);
             Ti.CiscoCommand("exit");
 
             Console.WriteLine();
 
-            //Console.WriteLine("Enter the IP and Subnet for the VLAN");
-            //Console.Write("IP and Subnet: ");
-            //string ipInput = Console.ReadLine();
-            //Ti.CiscoCommand("IP Address ", ipInput);
-            //Ti.CiscoCommand("exit");
-
-            Console.WriteLine();
+            Console.WriteLine("Enter the IP and Subnet for the VLAN");
+            Console.Write("IP and Subnet: ");
+            string ipInput = Console.ReadLine();
+            Ti.CiscoCommand("IP Address ", ipInput);
+            Ti.CiscoCommand("exit");
 
             // Configure Interface
             Console.WriteLine("Configure Interface");
@@ -86,6 +84,15 @@ namespace Telnet
                 Ti.CiscoCommand("exit");
                 Ti.CiscoCommand("exit");
             }
+
+            Console.WriteLine();
+
+            // Configure VLAN
+            Console.WriteLine("\nConfigure VLAN");
+            Console.Write("Enter the name for the VLAN: ");
+            string vlanInput = Console.ReadLine();
+            Ti.CiscoCommand("", vlanInput);
+            Ti.CiscoCommand("exit");
 
             Console.WriteLine();
 
