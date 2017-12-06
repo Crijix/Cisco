@@ -1,0 +1,124 @@
+body {
+    background: linear-gradient(to bottom, #0099ff 0%, #00ffff 100%);
+	//margin: 0;
+	padding: 0px 100px 0px 100px;
+	height: 848px;
+}
+
+/* HEADER */
+
+.topHeader {
+	border-radius: 10px 10px 0px 0px;
+	padding: 5px;
+	text-align: left;
+	background: black;
+	color: white;
+	font-size: 75%
+}
+
+.botHeader {
+	border-radius: 0px 0px 10px 10px;
+	padding: 5px;
+	text-align: left;
+	background: black;
+	color: white;
+	font-size: 75%
+}
+
+.header {
+	//background: linear-gradient(to bottom right, #00d0ff, #4ef0fc);
+	padding: 40px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	font-family: "Arial Black", Georgia, "Monospace";
+	background-image: url(images/header.jpg);
+}
+
+.subHeader {
+	border-radius: 10px 10px 10px 10px;
+	padding: 5px;
+	text-align: left;
+	background: #00d0ff;
+	color: black;
+	font-size: 100%
+	font-weight bold;
+	border: 1px solid black;
+}
+
+.subColumn {
+	border-radius: 10px 10px 10px 10px;
+	padding: 5px;
+	text-align: left;
+	background: gray;
+	color: white;
+	font-size: 100%
+	font-weight bold;
+	height: 257px;
+	border: 1px solid black;
+}
+
+.subColumn2 {
+	border-radius: 10px 10px 10px 10px;
+	padding: 5px;
+	text-align: left;
+	background: gray;
+	color: white;
+	font-size: 100%
+	font-weight bold;
+	height: 556px;
+	border: 1px solid black;
+}
+
+/* NAVIGATION */
+
+.nav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.nav a {
+	float: left;
+	display: block;
+	background-color: #333;
+	padding: 14px 16px;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+}
+
+.nav a:hover {
+	background-color: lightgray;
+	color: black;
+	text-decoration: underline black;
+}
+
+/* LAYOUT */
+
+#sidebar1 {
+	background-color: lightgray;
+	min-height: 600px;
+	float: left;
+	width: 275px;
+}
+
+#sidebar2 {
+	background-color: lightgray;
+	min-height: 600px;
+	float: right;
+	width: 275px;
+}
+
+#column1 {
+	background-color: lightgray;
+	min-height: 600px;
+	margin-left: 275px;
+	margin-right: 275px;
+}
+
+.center { margin: 0 auto; width: 570px;}
+
+div#container {
+	width: 90%
+	margin: 10px auto;
+}
